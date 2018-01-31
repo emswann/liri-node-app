@@ -1,5 +1,5 @@
 const Twitter = require('twitter');
-const fs      = require('./file.js');
+const file    = require('./file.js');
 
 const getTwitter = (config, limit, outfile) => {
   return new Promise((resolve, reject) => {
@@ -27,15 +27,15 @@ async function writeTwitter(response, outfile) {
     if (response.length) {
       response.forEach(tweet => {
         buffer += tweet.text + '\n';
-        buffer += 'Created: ' + tweet.created_at + '\n';
+        buffer += 'Created: ' + tweet.created_at + '\n\n';
       });
     }
     else {
-      buffer += 'No tweets found!' + '\n';
+      buffer += 'No tweets found!' + '\n\n';
     }
 
     console.log(buffer);
-    await fs.appendFile(outfile, buffer);
+    await file.appendFile(outfile, buffer);
   }
   catch(error) {
     console.log(error);

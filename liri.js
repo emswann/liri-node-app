@@ -18,26 +18,28 @@ const getSearchItem = args => {
   return searchItem;
 };
 
-async function processOption(option, searchItem) {
+async function processCmd(cmd, searchItem) {
   const TWITTER_LIMIT = 20;
   const SPOTIFY_LIMIT = 1;
   const OMDB_TYPE     = 'movie';
   const RANDOM_FILE   = './random.txt';
   const OUTPUT_FILE   = './log.txt';
 
-  var getRandomOption = data => {
+  var getRandomCmd = data => {
     var lines = data.split('\n');
     var randomInt = Math.floor(Math.random() * lines.length);
     var splitLine = lines[randomInt].split(',');
 
-    return ({option:     splitLine[0].trim(),
+    return ({cmd:        splitLine[0].trim(),
              searchItem: splitLine[1] ? splitLine[1].trim() : undefined});
   };
 
   try {
-    var data;
+    var data = 'Command: ' + cmd + ', SearchItem: ' + searchItem + '\n\n' ;
 
-    switch (option) {
+    await file.appendFile(OUTPUT_FILE, data);
+
+    switch (cmd) {
       case 'my-tweets':
         data = await twitter.getTwitter(keys.twitter, 
                                         TWITTER_LIMIT,
@@ -60,12 +62,12 @@ async function processOption(option, searchItem) {
       case 'do-what-it-says':
         data = await file.readFile(RANDOM_FILE);
 
-        var random = getRandomOption(data);
-        processOption(random.option, random.searchItem); 
+        var random = getRandomCmd(data);
+        processCmd(random.option, random.searchItem); 
         break;
 
       default:
-        throw('Invalid option - ' + option);
+        throw('Invalid command- ' + cmd);
     }
   }
   catch(error) {
@@ -74,13 +76,13 @@ async function processOption(option, searchItem) {
 };
 
 function main() {
-  var args   = process.argv;
-  var option = args[2];
+  var args = process.argv;
+  var cmd  = args[2];
   var searchItem;
 
   try {
     searchItem = getSearchItem(args);
-    processOption(option, searchItem);
+    processCmd(cmd, searchItem);
   }
   catch(error) {
     console.log('ERROR: ', error);

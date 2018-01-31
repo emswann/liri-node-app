@@ -1,5 +1,5 @@
 const Spotify = require('node-spotify-api');
-const fs      = require('./file.js');
+const file    = require('./file.js');
 
 const getSpotify = (config, title, limit, outfile) => {
   return new Promise((resolve, reject) => {
@@ -29,18 +29,18 @@ async function writeSpotify(response, outfile) {
 
     if (items.length) {
       items.forEach(item => {
-        buffer += '\nArtist(s): ' + item.artists[0].name + '\n';
+        buffer += 'Artist(s): ' + item.artists[0].name + '\n';
         buffer += 'Name: ' + item.name + '\n';
         buffer += 'Link: ' + item.external_urls.spotify + '\n';
-        buffer += 'Album: ' + item.album.name + '\n';
+        buffer += 'Album: ' + item.album.name + '\n\n';
       });
     }
     else {
-      buffer += 'No song found!\n';
+      buffer += 'No song found!\n\n';
     }
 
     console.log(buffer);
-    await fs.appendFile(outfile, buffer);
+    await file.appendFile(outfile, buffer);
   }
   catch(error) {
     console.log(error);

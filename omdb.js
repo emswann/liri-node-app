@@ -1,5 +1,5 @@
 const request = require('request');
-const fs      = require('./file.js');
+const file    = require('./file.js');
 
 const DEFAULT_TITLE = 'Mr. Nobody';
 
@@ -36,7 +36,7 @@ async function writeOMDB(response, outfile) {
     var buffer = '';
 
     if (response.Error) {
-      buffer += response.Error;
+      buffer += response.Error + '\n\n';
     }
     else {
       buffer += 'Title: ' + response.Title + '\n';
@@ -54,17 +54,17 @@ async function writeOMDB(response, outfile) {
     
       buffer += 'Plot: ' + response.Plot + '\n';
     
-      buffer += 'Actors: ' + response.Actors + '\n';
+      buffer += 'Actors: ' + response.Actors + '\n\n';
     
       if (response.Title === DEFAULT_TITLE) {
-        buffer += '\nIf you haven\'t watched "Mr. Nobody," then you should: <http://www.imdb.com/title/tt0485947/>\n';
+        buffer += '\If you haven\'t watched "Mr. Nobody," then you should: <http://www.imdb.com/title/tt0485947/>\n';
     
-        buffer += "It's on Netflix!\n";
+        buffer += "It's on Netflix!\n\n";
       }
     }
 
     console.log(buffer);
-    await fs.appendFile(outfile, buffer);
+    await file.appendFile(outfile, buffer);
   }
   catch(error) {
     console.log(error);
