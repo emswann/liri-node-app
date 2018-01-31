@@ -64,7 +64,7 @@ async function processOption(option, searchItem) {
     }
   }
   catch(error) {
-    throw(error);
+    console.log('Processing error: ' + error  + '!');
   }
 };
 
@@ -78,7 +78,7 @@ function main() {
     processOption(option, search);
   }
   catch(error) {
-    console.log('\nERROR: ', error);
+    console.log('ERROR: ', error);
   }
 }
 
