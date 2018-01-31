@@ -1,6 +1,6 @@
 const Twitter = require('twitter');
 
-const getTwitter = ((config, limit) => {
+const getTwitter = (config, limit) => {
   return new Promise((resolve, reject) => {
     const PATH = 'https://api.twitter.com/1.1/statuses/home_timeline.json';
 
@@ -17,14 +17,19 @@ const getTwitter = ((config, limit) => {
       }
     });
   });
-});
+};
 
-const writeTwitter = (response => {
-  response.forEach(tweet => {
-    console.log(tweet.text);
-    console.log('Created: ' + tweet.created_at + '\n');
-  });
-});
+const writeTwitter = response => {
+  if (response.length) {
+    response.forEach(tweet => {
+      console.log(tweet.text);
+      console.log('Created: ' + tweet.created_at + '\n');
+    });
+  }
+  else {
+    console.log('No tweets found!');
+  }
+};
 
 module.exports = {
   getTwitter

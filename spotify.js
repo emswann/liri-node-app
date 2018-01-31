@@ -1,6 +1,6 @@
 const Spotify = require('node-spotify-api');
 
-const getSpotify = ((config, title, limit) => {
+const getSpotify = (config, title, limit) => {
   return new Promise((resolve, reject) => {
     const DEFAULT_TITLE = 'Ace of Base The Sign';
 
@@ -19,18 +19,24 @@ const getSpotify = ((config, title, limit) => {
       }
     });
   });
-});
+};
 
-const writeSpotify = (response => {
+const writeSpotify = response => {
+  console.log(response);
   var items = response.tracks.items;
 
-  items.forEach(item => {
-    console.log('\nArtist(s): ' + item.artists[0].name);
-    console.log('Name: ' + item.name);
-    console.log('Link: ' + item.external_urls.spotify);
-    console.log('Album: ' + item.album.name + '\n');
-  });
-});
+  if (items.length) {
+    items.forEach(item => {
+      console.log('\nArtist(s): ' + item.artists[0].name);
+      console.log('Name: ' + item.name);
+      console.log('Link: ' + item.external_urls.spotify);
+      console.log('Album: ' + item.album.name + '\n');
+    });
+  }
+  else {
+    console.log('No songs found!');
+  }
+};
 
 module.exports = {
   getSpotify
