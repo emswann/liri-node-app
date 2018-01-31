@@ -31,8 +31,8 @@ async function processOption(option, searchItem) {
     var randomInt = Math.floor(Math.random() * lines.length);
     var splitLine = lines[randomInt].split(',');
 
-    return ({option:     splitLine[0],
-             searchItem: splitLine[1]});
+    return ({option:     splitLine[0].trim(),
+             searchItem: splitLine[1] ? splitLine[1].trim() : undefined});
   };
 
   try {
