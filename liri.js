@@ -24,7 +24,6 @@ async function processOption(option, searchItem) {
   const OMDB_TYPE     = 'movie';
   const RANDOM_FILE   = './random.txt';
   const OUTPUT_FILE   = './log.txt';
-  const ENCODING      = 'utf8';
 
   var getRandomOption = data => {
     var lines = data.split('\n');
@@ -40,20 +39,26 @@ async function processOption(option, searchItem) {
 
     switch (option) {
       case 'my-tweets':
-        data = await twitter.getTwitter(keys.twitter, TWITTER_LIMIT);
+        data = await twitter.getTwitter(keys.twitter, 
+                                        TWITTER_LIMIT,
+                                        OUTPUT_FILE);
         break;
 
       case 'spotify-this-song':
         data = await spotify.getSpotify(keys.spotify, 
-                                            searchItem,                         SPOTIFY_LIMIT);
+                                        searchItem,                         SPOTIFY_LIMIT,
+                                        OUTPUT_FILE);
         break;
 
       case 'movie-this':
-        data = await omdb.getOMDB(keys.omdb, searchItem, OMDB_TYPE);
+        data = await omdb.getOMDB(keys.omdb,
+                                  searchItem, 
+                                  OMDB_TYPE, 
+                                  OUTPUT_FILE);
         break;
 
       case 'do-what-it-says':
-        data = await file.readFile(RANDOM_FILE, ENCODING);
+        data = await file.readFile(RANDOM_FILE);
 
         var random = getRandomOption(data);
         processOption(random.option, random.searchItem); 
@@ -71,11 +76,11 @@ async function processOption(option, searchItem) {
 function main() {
   var args   = process.argv;
   var option = args[2];
-  var search;
+  var searchItem;
 
   try {
-    search = getSearchItem(args);
-    processOption(option, search);
+    searchItem = getSearchItem(args);
+    processOption(option, searchItem);
   }
   catch(error) {
     console.log('ERROR: ', error);
