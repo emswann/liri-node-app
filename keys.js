@@ -1,3 +1,8 @@
+/**
+ * @file Keys exports for API interfaces. 
+ * @author Elaina Swann
+ * @version 1.0 
+*/
 console.log('\nkeys.js has loaded\n');
 
 exports.twitter = {

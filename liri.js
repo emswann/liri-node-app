@@ -1,3 +1,8 @@
+/**
+ * @file Language Interpretation and Recognition Interface main program. Accepts 4 commands: my-tweets, spotify-this-song, movie-this, do-what-it-says. 
+ * @author Elaina Swann
+ * @version 1.0 
+*/
 const env     = require('dotenv').config();
 
 const keys    = require('./keys.js');
@@ -6,6 +11,11 @@ const spotify = require('./spotify.js');
 const omdb    = require('./omdb.js');
 const file    = require('./file.js');
 
+/** 
+ * @function getSearchItem
+ * @description Combines argument list into one search term. Avoids user from having to enclose the search term in quotes.
+ * @param {array} args Argument list - includes node and .js file name.
+*/
 const getSearchItem = args => {
   const START_INDEX = 3;
   var searchItem = '';
@@ -18,6 +28,13 @@ const getSearchItem = args => {
   return searchItem;
 };
 
+/** 
+ * @async
+ * @function processCmd
+ * @description Process command and control subsequent API call/interface.
+ * @param {string} cmd Command to determine which search/API call.
+ * @param {string} searchItem Search term for API calls.
+*/
 async function processCmd(cmd, searchItem) {
   const TWITTER_LIMIT = 20;
   const SPOTIFY_LIMIT = 1;
@@ -25,6 +42,14 @@ async function processCmd(cmd, searchItem) {
   const RANDOM_FILE   = './random.txt';
   const OUTPUT_FILE   = './log.txt';
 
+  /** 
+   * @function getRandomCmd 
+   * @description Parses random file contents, selects one line randomly and returns command and search term to execute.
+   * @param {string} data - Random file contents.
+   * @returns {Object} cmd {string}: LIRI command.
+   *                   searchItem {string|undefined}: Search term or undefined 
+   *                     if search term is not required.
+  */
   var getRandomCmd = data => {
     var lines = data.split('\n');
     var randomInt = Math.floor(Math.random() * lines.length);
@@ -75,6 +100,10 @@ async function processCmd(cmd, searchItem) {
   }
 };
 
+/** 
+ * @function main
+ * @description Main program for LIRI application.
+*/
 function main() {
   var args = process.argv;
   var cmd  = args[2];

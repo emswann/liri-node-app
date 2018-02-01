@@ -1,8 +1,22 @@
+/**
+ * @file Interface to OMDB. 
+ * @author Elaina Swann
+ * @version 1.0 
+*/
 const request = require('request');
 const file    = require('./file.js');
 
 const DEFAULT_TITLE = 'Mr. Nobody';
 
+/** 
+ * @function getOMDB 
+ * @description Promise function for accessing OMDB API.
+ * @param {string} config - Configuration data required for API call.
+ * @param {string} title - Title search term.
+ * @param {string} type - Type of title to search for.
+ * @param {string} outfile - Output file name for results.
+ * @returns {Promise} Data from API call or Error if occurred.
+*/
 const getOMDB = (config, title, type, outfile) => {
   return new Promise((resolve, reject) => {
     const PATH = 'http://www.omdbapi.com/';
@@ -28,6 +42,13 @@ const getOMDB = (config, title, type, outfile) => {
   });  
 };
 
+/** 
+ * @async
+ * @function writeOMDB 
+ * @description Writes OMDB results to console.log and output file.
+ * @param {string} response - Data returned by OMDB API call.
+ * @param {string} outfile - Output file name for results.
+*/
 async function writeOMDB(response, outfile) {
   try {
     const IMDB_INDEX = 0;
