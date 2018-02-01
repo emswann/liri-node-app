@@ -12,10 +12,11 @@ movie-this: Returns the movie title data from OMDB. Based on the <movie-title> i
 do-what-it-says: Reads the random.txt file and chooses a command randomly. LIRI then performs the command and search based on the random line of input.
 
 NOTE: Random.txt search term should be enclosed in quotes. Search term input from the command line does not require quotes. The input can be separated by whitespace.
-E.g. node liri spotify-this-song "White Christmas" 
-     node liri spotify-this-song White Christmas
 
-     spotify-this-song, "White Christmas" (for random.txt)
+    node liri spotify-this-song "White Christmas" 
+    node liri spotify-this-song White Christmas
+
+    spotify-this-song, "White Christmas" (for random.txt)
 
 
 ## Getting Started
