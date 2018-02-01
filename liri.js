@@ -63,7 +63,7 @@ async function processCmd(cmd, searchItem) {
     var data = 'Command: ' + cmd + ', SearchItem: ' + searchItem + '\n\n' ;
 
     await file.appendFile(OUTPUT_FILE, data);
-
+    
     switch (cmd) {
       case 'my-tweets':
         data = await twitter.getTwitter(keys.twitter, 
@@ -88,7 +88,7 @@ async function processCmd(cmd, searchItem) {
         data = await file.readFile(RANDOM_FILE);
 
         var random = getRandomCmd(data);
-        processCmd(random.option, random.searchItem); 
+        processCmd(random.cmd, random.searchItem); 
         break;
 
       default:
