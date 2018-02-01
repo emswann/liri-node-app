@@ -7,8 +7,11 @@ Language Interpretation and Recognition Interface. Accepts one of the following 
   4) do-what-it-says
 
 my-tweets: Returns the latest 20 tweets from your personal account.
+
 spotify-this-song: Returns the first song title data from Spotify. Based on the <song> input.
+
 movie-this: Returns the movie title data from OMDB. Based on the <movie-title> input.
+
 do-what-it-says: Reads the random.txt file and chooses a command randomly. LIRI then performs the command and search based on the random line of input.
 
 NOTE: Random.txt search term should be enclosed in quotes. Search term input from the command line does not require quotes. The input can be separated by whitespace.
