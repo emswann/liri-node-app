@@ -17,15 +17,7 @@ const file    = require('./file.js');
  * @param {array} args Argument list - includes node and .js file name.
 */
 const getSearchItem = args => {
-  const START_INDEX = 3;
-  var searchItem = '';
-
-  for (let i = START_INDEX; i < process.argv.length; i++) {
-    searchItem += process.argv[i] + ' ';
-  }
-  searchItem = searchItem.substr(0, searchItem.length - 1);
-
-  return searchItem;
+  return args.slice(3).join(' ');
 };
 
 /** 
