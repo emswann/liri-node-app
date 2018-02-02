@@ -2,13 +2,13 @@
 
 Language Interpretation and Recognition Interface. Accepts one of the following commands:
   1) my-tweets
-  2) spotify-this-song <song>
+  2) spotify-this-song <song-title>
   3) movie-this <movie-title>
   4) do-what-it-says
 
 my-tweets: Returns the latest 20 tweets from your personal account.
 
-spotify-this-song: Returns the first song title data from Spotify. Based on the <song> input.
+spotify-this-song: Returns the first song title data from Spotify. Based on the <song-title> input.
 
 movie-this: Returns the movie title data from OMDB. Based on the <movie-title> input.
 
@@ -16,10 +16,13 @@ do-what-it-says: Reads the random.txt file and chooses a command randomly. LIRI 
 
 NOTE: Random.txt search term should be enclosed in quotes. Search term input from the command line does not require quotes. The input can be separated by whitespace.
 
+  For command line -
+
     node liri spotify-this-song "White Christmas" 
     node liri spotify-this-song White Christmas
 
-    spotify-this-song, "White Christmas" (for random.txt)
+  For random.txt -
+    spotify-this-song, "White Christmas"
 
 
 ## Getting Started
@@ -30,7 +33,7 @@ You should be able to download the files on your computer and run locally or acc
 
 ### Prerequisites
 
-Requires users own .env variables which includes private API keys.
+Requires users own .env variables. This should include private API keys to access Twitter, Spotify and OMDB. The user will also need a Twitter account to view the latest tweets.
 
 ## Built With
 

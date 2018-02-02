@@ -9,7 +9,7 @@ const ENCODING = 'utf8';
 
 /** 
  * @function appendFile 
- * @description Promise function for fs.appendfile.
+ * @description Promise function for fs.appendFile.
  * @param {string} path - Output file name.
  * @param {string} data - Data to append to file.
  * @returns {Promise} Error if occurred. No data is returned.

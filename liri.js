@@ -1,5 +1,5 @@
 /**
- * @file Language Interpretation and Recognition Interface main program. Accepts 4 commands: my-tweets, spotify-this-song, movie-this, do-what-it-says. 
+ * @file Language Interpretation and Recognition Interface main program. Accepts 4 commands: my-tweets, spotify-this-song, movie-this, do-what-it-says. LIRI then queries the appropriate API based onthe command and output the results to console.log and a file. 
  * @author Elaina Swann
  * @version 1.0 
 */
@@ -23,7 +23,7 @@ const getSearchItem = args => {
 /** 
  * @async
  * @function processCmd
- * @description Process command and control subsequent API call/interface.
+ * @description Processes command and control subsequent API call/interface.
  * @param {string} cmd Command to determine which search/API call.
  * @param {string} searchItem Search term for API calls.
 */
