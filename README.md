@@ -28,17 +28,20 @@ NOTE: Random.txt search term should be enclosed in quotes. Search term input fro
 
 ## Getting Started
 
-You should be able to download the files on your computer and run locally or access via our github pages link below:
+You should be able to download the files via our github pages link below and run locally on your computer:
 
-[https://emswann.github.io/liri-node-app/](https://emswann.github.io/liri-node-app/)
+[https://github.com/emswann/liri-node-app.git](https://github.com/emswann/liri-node-app.git)
 
 ### Prerequisites
 
 Requires users own .env variables. This should include private API keys to access Twitter, Spotify and OMDB. The user will also need a Twitter account to view the latest tweets.
 
+NPM install based on package.json.
+
 ## Built With
 
 * [node.js](https://nodejs.org/en/node.js) - Server side programming language.
+* [fs module] (https://nodejs.org/api/fs.html) - File system node package.
 * [Twitter](https://www.npmjs.com/package/twitter) - API access to Twitter account.
 * [Spotify](https://www.npmjs.com/package/node-spotify-api) - API access to song information.
 * [Request](https://www.npmjs.com/package/request) - Request package to access OMDB API.
