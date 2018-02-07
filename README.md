@@ -40,8 +40,8 @@ NPM install based on package.json.
 
 ## Built With
 
-* [node.js](https://nodejs.org/en/node.js) - Server side programming language.
-* [fs module] (https://nodejs.org/api/fs.html) - File system node package.
+* [node.js](https://nodejs.org/en/) - Server side programming language.
+* [fs module](https://nodejs.org/api/fs.html) - File system node package.
 * [Twitter](https://www.npmjs.com/package/twitter) - API access to Twitter account.
 * [Spotify](https://www.npmjs.com/package/node-spotify-api) - API access to song information.
 * [Request](https://www.npmjs.com/package/request) - Request package to access OMDB API.
