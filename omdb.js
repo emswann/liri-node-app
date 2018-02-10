@@ -60,14 +60,19 @@ async function writeOMDB(response, outfile) {
       buffer += response.Error + '\n\n';
     }
     else {
+      console.log(response);
       buffer += 'Title: ' + response.Title + '\n';
 
       buffer += 'Year: ' + response.Year + '\n';
 
-      buffer += 'IMDB Rating: ' + response.Ratings[IMDB_INDEX].Value + '\n';
+      if (response.Ratings.length > 0) {
+        buffer += 'IMDB Rating: ' + response.Ratings[IMDB_INDEX].Value + '\n';
 
-      buffer += 'Rotten Tomatoes Rating: ' 
+        if (response.Ratings.length > 1) {
+          buffer += 'Rotten Tomatoes Rating: ' 
             + response.Ratings[ROTTEN_TOMATO_INDEX].Value + '\n';
+        }
+      }
     
       buffer += 'Country: ' + response.Country + '\n';
     
