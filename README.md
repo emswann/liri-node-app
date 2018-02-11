@@ -36,7 +36,27 @@ You should be able to download the files via our github pages link below and run
 
 Requires users own .env variables. This should include private API keys to access Twitter, Spotify and OMDB. The user will also need a Twitter account to view the latest tweets.
 
-NPM install based on package.json.
+The .env file should configure the following variables:
+
+Twitter - 
+
+* TWITTER_CONSUMER_KEY
+* TWITTER_CONSUMER_SECRET
+* TWITTER_ACCESS_TOKEN_KEY
+* TWITTER_ACCESS_TOKEN_SECRET
+
+
+Spotify - 
+
+* SPOTIFY_ID
+* SPOTIFY_SECRET
+
+OMDB -
+
+* OMDB_API_KEY
+
+
+The user will also need to run NPM install based on package.json.
 
 ## Built With
 
