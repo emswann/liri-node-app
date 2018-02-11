@@ -60,7 +60,6 @@ async function writeOMDB(response, outfile) {
       buffer += response.Error + '\n\n';
     }
     else {
-      console.log(response);
       buffer += 'Title: ' + response.Title + '\n';
 
       buffer += 'Year: ' + response.Year + '\n';
